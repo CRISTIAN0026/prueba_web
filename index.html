@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>¡Pop It!</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="header__nav">
+        <a href="#" class="header__logo">NO_ES_BURBUJAS.RU</a>
+        <button class="header__toggle" aria-label="Toggle Menu">&#9776;</button>
+        <ul class="header__menu">
+          <li class="header__menu-item"><a href="#">Sobre Nosotros</a></li>
+          <li class="header__menu-item"><a href="#">Descuentos</a></li>
+          <li class="header__menu-item"><a href="#">Contactos</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero__content">
+        <h1 class="hero__title">¡POP IT!</h1>
+        <p class="hero__subtitle">
+          El mejor juguete antiestrés: ¡burbuja infinita!
+        </p>
+        <button class="hero__button">COMPRAR</button>
+      </div>
+    </section>
+
+    <section class="about">
+      <h2 class="about__title">¿Qué es Pop it?</h2>
+      <p class="about__description">
+        Pop it se traduce literalmente como "revienta esto". Es un juego
+        infantil que ha ganado popularidad en los últimos años debido a su
+        sencillez y su capacidad para proporcionar una experiencia sensorial
+        agradable. Consiste en una superficie de silicona con burbujas que se
+        pueden presionar y hacer "pop" al ser liberadas. Este juego no solo es
+        divertido, sino que también se ha utilizado como una herramienta para
+        ayudar a reducir el estrés y mejorar la concentración en personas de
+        todas las edades. Su diseño portátil y sus diversos colores y formas lo
+        hacen atractivo para niños y adultos por igual, convirtiéndolo en un
+        accesorio popular tanto en el hogar como en la oficina.
+      </p>
+    </section>
+
+    <section class="products">
+      <h2 class="products__title">¡Elige tu Pop-It!</h2>
+      <div class="products__list">
+        <div class="products__item">
+          <figure class="products__figure">
+            <img
+              src="./images/square.png"
+              alt="Cuadrado multicolor"
+              class="products__image"
+            />
+            <figcaption class="products__caption">
+              Cuadrado multicolor
+            </figcaption>
+          </figure>
+          <button class="products__button">COMPRAR</button>
+        </div>
+
+        <div class="products__item">
+          <figure class="products__figure">
+            <img
+              src="./images/amongus.png"
+              alt="Among Us, de mármol"
+              class="products__image"
+            />
+            <figcaption class="products__caption">
+              Among Us de mármol
+            </figcaption>
+          </figure>
+          <button class="products__button">COMPRAR</button>
+        </div>
+
+        <div class="products__item">
+          <figure class="products__figure">
+            <img
+              src="./images/round.png"
+              alt="Redondo multicolor"
+              class="products__image"
+            />
+            <figcaption class="products__caption">
+              Redondo multicolor
+            </figcaption>
+          </figure>
+          <button class="products__button">COMPRAR</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="carousel">
+      <div class="carousel__images">
+        <img
+          src="./images/image1.jpg"
+          alt="Image 1"
+          class="carousel__image active"
+        />
+        <img src="./images/image2.png" alt="Image 2" class="carousel__image" />
+        <img src="./images/image3.jpeg" alt="Image 3" class="carousel__image" />
+        <img src="./images/image4.jpg" alt="Image 4" class="carousel__image" />
+      </div>
+      <button class="carousel__button carousel__button--prev">&#10094;</button>
+      <button class="carousel__button carousel__button--next">&#10095;</button>
+    </div>
+
+    <section class="rules">
+      <div class="rules__content">
+        <div class="rules__text">
+          <h2>Reglas del juego</h2>
+          <p class="rules__description">
+            Los jugadores toman turnos presionando las burbujas. Debes terminar
+            la fila que comenzaste. Presiona un máximo de 3 burbujas adyacentes
+            por turno. ¡El último en hacer un movimiento pierde!
+          </p>
+        </div>
+        <div class="rules__image-container">
+          <img src="./images/photo.jpg" alt="Juego" class="rules__image" />
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__links">
+        <a href="#" class="footer__title">NO_ES_BURBUJAS.RU</a>
+        <a href="#">Métodos de pago</a>
+        <a href="#">Envío</a>
+        <a href="#">Mayorista</a>
+        <a href="#">Contactos</a>
+      </div>
+    </footer>
+    <script>
+      document
+        .querySelector(".header__toggle")
+        .addEventListener("click", function () {
+          document.querySelector(".header__menu").classList.toggle("show");
+        });
+
+      const images = document.querySelectorAll(".carousel__image");
+      const imageContainer = document.querySelector(".carousel__images");
+      let currentIndex = 0;
+
+      function moveToNextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        imageContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }
+
+      document
+        .querySelector(".carousel__button--next")
+        .addEventListener("click", moveToNextImage);
+
+      document
+        .querySelector(".carousel__button--prev")
+        .addEventListener("click", () => {
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+          imageContainer.style.transform = `translateX(-${
+            currentIndex * 100
+          }%)`;
+        });
+
+      setInterval(moveToNextImage, 3000);
+    </script>
+  </body>
+</html>
